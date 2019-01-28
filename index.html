@@ -302,32 +302,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="浏览器的请求过程："><a href="#浏览器的请求过程：" class="headerlink" title="浏览器的请求过程："></a>浏览器的请求过程：</h2><ol>
-<li>当用户通过在浏览器中输入URL地址：如图</li>
-</ol>
-<p><img src="C:\Users\Administrator\Desktop\1.jpg" alt="1"></p>
-<p>2.浏览器会解析用户输入的URL地址，得到协议+域名+端口+路径+参数</p>
-<p>3.执行到这一步浏览器就获得了域名，浏览器会先检查本地缓存中有没有这个域名，如果有，将会得到域名相对应的ip地址，，如果没有，浏览器就会发起一个DNS系统调用来获取IP地址。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">插入一部小插曲：DNS系统调用过程</span><br><span class="line"></span><br><span class="line">1. 首先检查操作系统缓存有没有这个域名，如果有，返回IP地址。没有则执行下一步</span><br><span class="line">2. 在系统的hosts文件中查找这个域名。如果有，返回IP地址，没有则执行下一步</span><br><span class="line">3. DNS服务器发起一个系统调用，通过域名找到对应的IP地址，返回给浏览器。</span><br></pre></td></tr></table></figure>
-<p>4.浏览器通过本地的随机端口建立一个与服务器指定端口之间的连接通道，服务器指定端口一般为http为80端口，https为433端口</p>
-<p>5.浏览器会将客户端的一些信息打上一个“包”（请求报文），并通过连接通道发送到服务端</p>
-<p><strong>此处是等待服务端响应过来的报文</strong></p>
-<p>6.打开服务端返回过来的“包”，找到响应报文里的Content-Type，浏览器根据Content-Type的值的来决定如何处理响应的内容，如果是html，则渲染到界面，如果是php,或者是css，则做别的处理</p>
-<p><img src="C:\Users\Administrator\Desktop\2.png" alt="2"></p>
-<h2 id="服务端的响应过程"><a href="#服务端的响应过程" class="headerlink" title="服务端的响应过程"></a>服务端的响应过程</h2><p>服务器接收到客户端传过来的“包”，交给了WebServer,</p>
-<p>WebServer拿到了“包“，获取到了里面的请求路径。</p>
-<ol>
-<li><p>WebServer根据请求的路径对应文件的扩展名找到文件的MIME Type</p>
-</li>
-<li><p>找到MIME Type之后，判断文件类型是否为静态文件，如果是静态文件，则直接读取这个文件，再打包这个文件发送到客户端</p>
-</li>
-<li><p>如果不是静态文件，则交给后端语言处理，处理完毕则返回给WebServer。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">小插曲：后端的语言有php/java等，这里以处理php文件为例</span><br><span class="line">1.当php接收到WebServer请求，就可以读取发送过来的请求文件，这里是php文件。</span><br><span class="line">2.执行文件里面的代码</span><br><span class="line">3.将执行结果返回给WebServer</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>WebServer把要发送给客户端的数据打包通过连接通道发回给客户端。</p>
-</li>
-</ol>
-
+              <p>摘要：</p>
+<p>浏览器的请求过程</p>
+<p>服务器的响应过程</p>
+          
       
     </div>
     
@@ -336,6 +314,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2019/01/28/浏览器服务器请求与相应过程/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
